@@ -1,48 +1,25 @@
 import * as fs from "fs";
 
-const max = (x: number, y: number): number => {
-  if (x > y) return x;
-  return y;
-};
-
-// Part 1
 fs.readFile(`./src/inputs/day01.txt`, "utf8", (err, data) => {
   if (err) throw err;
 
-  // Convert data to a 2d array of numbers
-  const dataArr = data.split("\n\n").map((i) => i.split("\n").map(Number));
+  // Convert data to an array
+  const arr = data.split("\n\n").map((i) =>
+    i
+      .split("\n")
+      .map(Number)
+      .reduce((total, i) => total + i, 0)
+  );
 
-  let largest = 0;
-  dataArr.forEach((items) => {
-    const sum = items.reduce((total, i) => total + i, 0);
-    largest = max(largest, sum);
-  });
+  const largest = Math.max(...arr);
 
   console.log(`Part 1 solution: ${largest}`);
-});
 
-// Part 2
-fs.readFile(`./src/inputs/day01.txt`, "utf8", (err, data) => {
-  if (err) throw err;
+  // Part 2
+  const topThreeSum = arr
+    .sort((a, b) => b - a)
+    .slice(0, 3)
+    .reduce((current, i) => current + i, 0);
 
-  // Convert data to a 2d array of numbers
-  const dataArr = data.split("\n\n").map((i) => i.split("\n").map(Number));
-  // Top three array
-  const topThree = [0, 0, 0];
-
-  dataArr.forEach((arr) => {
-    // Get the sum of all items in the array
-    let sum = arr.reduce((current, i) => current + i, 0);
-
-    // Update the top three
-    topThree.forEach((item, idx) => {
-      if (sum > item) {
-        [topThree[idx], sum] = [sum, topThree[idx]];
-      }
-    });
-  });
-
-  console.log(
-    `Part 2 solution: ${topThree.reduce((current, i) => current + i, 0)}`
-  );
+  console.log(`Part 2 solution: ${topThreeSum}`);
 });
