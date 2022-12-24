@@ -36,11 +36,8 @@ fs.readFile(`./src/inputs/day01.txt`, "utf8", (err, data) => {
 
     // Update the top three
     topThree.forEach((item, idx) => {
-      let tmp = 0;
       if (sum > item) {
-        tmp = item;
-        topThree[idx] = sum;
-        sum = tmp;
+        [topThree[idx], sum] = [sum, topThree[idx]];
       }
     });
   });
