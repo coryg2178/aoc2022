@@ -11,6 +11,7 @@ fs.readFile(`./src/inputs/day01.txt`, "utf8", (err, data) => {
       .reduce((total, i) => total + i, 0)
   );
 
+  // Part 1
   const largest = Math.max(...arr);
 
   console.log(`Part 1 solution: ${largest}`);
