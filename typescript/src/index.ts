@@ -5,7 +5,7 @@ import { runDay } from "./utils";
 const rl = readline.createInterface({ input, output });
 
 rl.question(
-  "Which day would you like the input from (01 to 25)? ",
+  "Which day would you like the solutions to (01 to 25)? ",
   (answer) => {
     runDay(answer);
   }
