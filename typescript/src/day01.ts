@@ -1,3 +1,5 @@
+import { readInput } from "./utils";
+
 const makeArr = (data: string) => {
   return data.split("\n\n").map((i) =>
     i
@@ -7,12 +9,12 @@ const makeArr = (data: string) => {
   );
 };
 
-export const d1p1 = (data: string) => {
+export const partOne = (data: string) => {
   const arr = makeArr(data);
   return Math.max(...arr);
 };
 
-export const d1p2 = (data: string) => {
+export const partTwo = (data: string) => {
   const arr = makeArr(data);
   return arr
     .sort((a, b) => b - a)
@@ -20,7 +22,9 @@ export const d1p2 = (data: string) => {
     .reduce((current, i) => current + i, 0);
 };
 
-export const dayOne = (data: string) => {
-  console.log(`Part 1 solution: ${d1p1(data)}`);
-  console.log(`Part 2 solution: ${d1p2(data)}`);
+export const dayOne = () => {
+  const input = readInput("./src/inputs/day01.txt");
+
+  console.log(`Part 1 solution: ${partOne(input)}`);
+  console.log(`Part 2 solution: ${partTwo(input)}`);
 };

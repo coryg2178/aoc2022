@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import { dayOne } from "./day01";
+import { dayTwo } from "./day02";
 
 export const readInput = (file: string) => {
   const data = fs.readFileSync(file, "utf-8");
@@ -9,7 +10,10 @@ export const readInput = (file: string) => {
 export const runDay = (day: string) => {
   switch (day) {
     case "01":
-      dayOne(String(readInput(`./src/inputs/day01.txt`)));
+      dayOne();
+      break;
+    case "02":
+      dayTwo();
       break;
     default:
       console.error(
