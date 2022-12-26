@@ -1,26 +1,30 @@
-import * as fs from "fs";
+import { readInput } from "./utils";
 
-fs.readFile(`./src/inputs/day01.txt`, "utf8", (err, data) => {
-  if (err) throw err;
-
-  // Convert data to an array
-  const arr = data.split("\n\n").map((i) =>
+const makeArr = (data: string) => {
+  return data.split("\n\n").map((i) =>
     i
       .split("\n")
       .map(Number)
       .reduce((total, i) => total + i, 0)
   );
+};
 
-  // Part 1
-  const largest = Math.max(...arr);
+export const partOne = (data: string) => {
+  const arr = makeArr(data);
+  return Math.max(...arr);
+};
 
-  console.log(`Part 1 solution: ${largest}`);
-
-  // Part 2
-  const topThreeSum = arr
+export const partTwo = (data: string) => {
+  const arr = makeArr(data);
+  return arr
     .sort((a, b) => b - a)
     .slice(0, 3)
     .reduce((current, i) => current + i, 0);
+};
 
-  console.log(`Part 2 solution: ${topThreeSum}`);
-});
+export const dayOne = () => {
+  const input = readInput("./src/inputs/day01.txt");
+
+  console.log(`Part 1 solution: ${partOne(input)}`);
+  console.log(`Part 2 solution: ${partTwo(input)}`);
+};
