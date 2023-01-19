@@ -3,6 +3,7 @@ import { dayOne } from "./day01";
 import { dayTwo } from "./day02";
 import { dayThree } from "./day03";
 import { dayFour } from "./day04";
+import { dayFive } from "./day05";
 
 export const readInput = (file: string) => {
   const data = fs.readFileSync(file, "utf-8");
@@ -22,6 +23,9 @@ export const runDay = (day: string) => {
       break;
     case "04":
       dayFour();
+      break;
+    case "05":
+      dayFive();
       break;
     default:
       console.error(
